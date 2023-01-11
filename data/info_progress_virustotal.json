@@ -2,13 +2,23 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [],
-"updates": [
-"KB5022282",
-"KB5022286",
-"KB5022287",
-"KB5022289",
-"KB5022297",
-"KB5022303"
+"retry": [
+[
+"bfe.dll",
+"a2f8b2282943bb9d39ce79eab05bc9be5c859585536cf34957f9f4211706f17f"
+],
+[
+"udwm.dll",
+"2726aeea08374ef88e00fc2560ea256e05cc3246cfdfde089a06f8610b894b18"
+],
+[
+"unidrv.dll",
+"0d84dcb70fc48eb88cb3e29c8a6bcc6d78725f5e1f6fb11fd18494dca7cd0523"
+],
+[
+"wow64win.dll",
+"2fac8cc3653c2e9747864417c65ea02745f5653c3608fc115ad756199ab22bc0"
 ]
+],
+"updates": null
 }
