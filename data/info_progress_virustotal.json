@@ -2,11 +2,6 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [
-[
-"usoclient.exe",
-"012a644f15e93ba6f10917883dca461177141008516de30700d1e052185a4cf0"
-]
-],
+"retry": [],
 "updates": null
 }
