@@ -4,14 +4,6 @@
 "pending": {},
 "retry": [
 [
-"edgecontent.dll",
-"5ecdb10469c4a824253f29e95d2b522d45c782ec7b716de805b0aefde78df718"
-],
-[
-"grouptrusteeai.dll",
-"d2df276a82df42aeb01e324806f4f2df341d6a4ddebaa6290d03c8d949e4774d"
-],
-[
 "luainstall.dll",
 "5558ace7b639c3a0b57894d5b9d3c6689b94bdb4cb9a68312f9bf7f1edb4bb56"
 ],
@@ -22,6 +14,10 @@
 [
 "netsetupengine.dll",
 "f462a9f40a6e32293de54d476a66e477fbf8a4178e1457f291614b34414439ba"
+],
+[
+"wermgr.exe",
+"58b3e6007aa06506927cb552abada7502c91650ca6f35bf1ed78c83223842d24"
 ]
 ],
 "updates": null
