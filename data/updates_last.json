@@ -944,6 +944,12 @@
             "releaseDate": "2023-01-10",
             "releaseVersion": "10240.19685",
             "updateUrl": "https://support.microsoft.com/help/5022297"
+        },
+        "KB5022858": {
+            "heading": "February 14, 2023-KB5022858 (OS Build 10240.19747)",
+            "releaseDate": "2023-02-14",
+            "releaseVersion": "10240.19747",
+            "updateUrl": "https://support.microsoft.com/help/5022858"
         }
     },
     "1511": {
