@@ -2,6 +2,19 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [],
+"retry": [
+[
+"applockercsp.dll",
+"d375ee820dc54fc1382137190ce1f73e2c76b82aa2d4c93a5cd229f5c2ac6e7a"
+],
+[
+"fhautoplay.dll",
+"3ed985566c88b66a80964d5a9e2af943f57796386b81827efdf5aaad26e844ad"
+],
+[
+"rstrui.exe",
+"29c4363b55881d337b8d6b14fd3b60fd9ca910bd584f9e2f4f0c9494abee620d"
+]
+],
 "updates": null
 }
