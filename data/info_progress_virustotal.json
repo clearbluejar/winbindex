@@ -2,6 +2,15 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [],
+"retry": [
+[
+"schannel.dll",
+"59428e3c9b7804310da5ff8aa513045f9f5633c4473d55164a077da6a7ac3950"
+],
+[
+"sensorsnativeapi.v2.dll",
+"67dab6c38e29a12eefc697bc6f38aadb5a8a769cf7619902b8e4cb9b0eb230dd"
+]
+],
 "updates": null
 }
