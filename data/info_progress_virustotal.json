@@ -4,12 +4,12 @@
 "pending": {},
 "retry": [
 [
-"schannel.dll",
-"59428e3c9b7804310da5ff8aa513045f9f5633c4473d55164a077da6a7ac3950"
+"mfasfsrcsnk.dll",
+"18eb49b4242dc36fd37af9bdbee62257c04019e913b8e12689d5512e0ee93ce8"
 ],
 [
-"sensorsnativeapi.v2.dll",
-"67dab6c38e29a12eefc697bc6f38aadb5a8a769cf7619902b8e4cb9b0eb230dd"
+"mssprxy.dll",
+"5a059bc5ee33fd5feaeda9c887fdcd4a8ce00a1dd5e64461ebd7b45203f0e4e9"
 ]
 ],
 "updates": null
