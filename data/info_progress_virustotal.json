@@ -2,6 +2,11 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [],
+"retry": [
+[
+"windows.staterepositorycore.dll",
+"3e8bdd4784eb8129fc65799f3d16f9ec62089d55ee7ee55e514d751e4f16dd59"
+]
+],
 "updates": null
 }
