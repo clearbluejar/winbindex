@@ -5,12 +5,12 @@
 ## Indexed Files
 
 <!--FileStats-->
-Total amount of supported PE files: 383,326
+Total amount of supported PE files: 383,760
 
 * No information: 9,607
-* Delta file information (multiple links): 3,674
+* Delta file information (multiple links): 3,975
 * Delta file information: 13,988
-* PE file information: 36,178
+* PE file information: 36,311
 * Full information (VirusTotal): 202,965
 * Full information (file): 116,914
 
