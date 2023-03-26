@@ -8,10 +8,10 @@
 Total amount of supported PE files: 384,840
 
 * No information: 9,607
-* Delta file information (multiple links): 3,435
-* Delta file information: 14,055
-* PE file information: 36,116
-* Full information (VirusTotal): 204,713
+* Delta file information (multiple links): 3,433
+* Delta file information: 14,035
+* PE file information: 36,112
+* Full information (VirusTotal): 204,739
 * Full information (file): 116,914
 
 Some stats:
