@@ -2,6 +2,11 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [],
+"retry": [
+[
+"mdmappinstaller.exe",
+"4a4ae489aa55059c9c14e71beb3e918e3cf9501719a9cff2af2693b471a6b97f"
+]
+],
 "updates": null
 }
