@@ -4,8 +4,12 @@
 "pending": {},
 "retry": [
 [
-"syncsharettsvc.exe",
-"67a263d99c0fa9dbd1f3784e9c6176e184561edf97fdcb3107d34ac9dff74c46"
+"ntdsutil.exe",
+"6e67cd4774e13e32c6d28727732c088d4a9e252d2c9cd1b423b3e37d8bc2876a"
+],
+[
+"win32kfull.sys",
+"ebd4030d7ed900fbdd4a02b5a385b2a58b0a618db0a2c85c78cfe67fb5654af0"
 ]
 ],
 "updates": null
