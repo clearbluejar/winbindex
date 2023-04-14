@@ -4,12 +4,20 @@
 "pending": {},
 "retry": [
 [
-"ntdsutil.exe",
-"6e67cd4774e13e32c6d28727732c088d4a9e252d2c9cd1b423b3e37d8bc2876a"
+"acxtrnal.dll",
+"67f780062c85cb26c43509010ed0c2c8d4e505423bda6b636536aa998c992461"
 ],
 [
-"win32kfull.sys",
-"ebd4030d7ed900fbdd4a02b5a385b2a58b0a618db0a2c85c78cfe67fb5654af0"
+"inkdiv.dll",
+"ae2e9e86e3e6df24bbd9624e57705d18d006eb4edacf1138fd651887aed16350"
+],
+[
+"mssphtb.dll",
+"5e3a43bf674567cff24fae9c9da4424cc162e05be2ff50c528ef91dee59e0257"
+],
+[
+"rtscom.dll",
+"fda7a7a1646e39d5285a301ff0af4207e89cd76b2272671b6367158de89c9fb0"
 ]
 ],
 "updates": null
