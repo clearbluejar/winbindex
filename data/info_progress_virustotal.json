@@ -2,6 +2,15 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [],
+"retry": [
+[
+"provops.dll",
+"21619397a3fe11b24100144ae17b2bd775db721fed262381504f41b2eae49760"
+],
+[
+"sxssrv.dll",
+"5dd743ec6df4445326e96c577d054a455b7e812a77c8e54deb9aea862b3d076e"
+]
+],
 "updates": null
 }
