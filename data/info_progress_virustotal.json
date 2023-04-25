@@ -2,10 +2,23 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [],
-"updates": [
-"KB5025297",
-"KB5025298",
-"KB5025305"
+"retry": [
+[
+"eoaexperiences.exe",
+"5ce19d4eafe89752d1830b08a0203a3db3d755beb4f15d0c98b8442b4f2eb59c"
+],
+[
+"sensorservice.dll",
+"15974effe8dd72450e644e5957ee18c03e93ed92bb65ebbf8aee36a8b42081dc"
+],
+[
+"usb4devicerouter.sys",
+"f05cb9381ca2d9e98566c37d930d0e400e1c1234e4d334e5e9a0cf10bb1595c4"
+],
+[
+"usbxhci.sys",
+"eeb293318fc11e3be8580baf2d73324e8c6dd4eef15be7eeaec3703b31c61779"
 ]
+],
+"updates": null
 }
