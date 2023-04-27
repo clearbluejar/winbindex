@@ -4,20 +4,8 @@
 "pending": {},
 "retry": [
 [
-"applytrustoffline.exe",
-"c780ce9d77d55b89ebbdc376f3dcda5a6311982a54fc82c00cdc1940c614e883"
-],
-[
-"sensorservice.dll",
-"15974effe8dd72450e644e5957ee18c03e93ed92bb65ebbf8aee36a8b42081dc"
-],
-[
-"usb4devicerouter.sys",
-"f05cb9381ca2d9e98566c37d930d0e400e1c1234e4d334e5e9a0cf10bb1595c4"
-],
-[
-"usbxhci.sys",
-"eeb293318fc11e3be8580baf2d73324e8c6dd4eef15be7eeaec3703b31c61779"
+"vmms.exe",
+"4259df17181b8bcc8a23d8c96be3eb06b450d5f242ae2c016841805e0a6bbe2e"
 ]
 ],
 "updates": null
