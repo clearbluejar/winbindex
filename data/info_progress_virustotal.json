@@ -2,59 +2,6 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [
-[
-"chsifecomp.dll",
-"4f3bda8bf4d2ea16379e780209a67ee9323009d2fc19121af417d970cd861ef9"
-],
-[
-"chslexiconupdateds.dll",
-"ef39c6e067a5e8102e07f29b2f0994372276f96b589089335981a4114183e316"
-],
-[
-"chspinyinds.dll",
-"95dba256145bd1b7bc107db791a99a08179ee7d326c883ffba478fa642c56a9c"
-],
-[
-"chsproxyds.dll",
-"36bc424a4063bd75505aa5d998a66355d1ccb2cf94414ece2db492685bdc9162"
-],
-[
-"chsroaming.dll",
-"420b055aee7b7cb8b72f9ca3d7f6580603f87354e69dd882b64cddff55158fde"
-],
-[
-"chtchangjieds.dll",
-"53a132cc852a986ae3ce404c5295670e0dc19709beff7a74473b2470ce0ea49c"
-],
-[
-"chtquickds.dll",
-"f99ec3e0c2ff3154329edf5de57c6ef80d9616b6346bf0a2e594c3df576421bc"
-],
-[
-"chxadvancedds.dll",
-"06378147afb2b771cf6690259f5e079d5da91b7ba2258834870ec7ee0ac42c4d"
-],
-[
-"chxuserdictds.dll",
-"669e710ca1cf0033648f28bf017c93419a1074d8df94b32770f62f9ab64024f4"
-],
-[
-"clipsp.sys",
-"916a3b515dfd326c60c33812f2e889a468023cf7290c5854e8dd7131d648c57d"
-],
-[
-"desktopimgdownldr.exe",
-"6c174217684b5a105ce7c3d8f07f895cc55df75463dc7c3d1690311e4e286382"
-],
-[
-"dwmapi.dll",
-"389b172898cc283b27da1dad72ddab8a40fa24bf1c2134e760b4faae5cd4e7bf"
-],
-[
-"lockapphost.exe",
-"5b37245224533630e72dbceefd61d3c91be571d29741046ee8561f1aaa0f0bc4"
-]
-],
+"retry": [],
 "updates": null
 }
