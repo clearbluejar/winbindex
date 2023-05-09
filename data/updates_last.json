@@ -1034,6 +1034,12 @@
             "releaseDate": "2023-04-11",
             "releaseVersion": "10240.19869",
             "updateUrl": "https://support.microsoft.com/help/5025234"
+        },
+        "KB5026382": {
+            "heading": "May 9, 2023-KB5026382 (OS Build 10240.19926)",
+            "releaseDate": "2023-05-09",
+            "releaseVersion": "10240.19926",
+            "updateUrl": "https://support.microsoft.com/help/5026382"
         }
     },
     "1511": {
