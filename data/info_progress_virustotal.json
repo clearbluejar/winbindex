@@ -2,21 +2,6 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [
-[
-"appxdeploymentclient.dll",
-"1f9f6d6a89fd0be02f2b7bf13cb60450e72cd68f1270e973b79eea2d3c5bfd1e"
-],
-[
-"vmwp.exe",
-"d4a48ce13712d3fa50136a6cea46b7bd5ed9d2e23b561b8e3198053813cc472e"
-],
-[
-"wow64cpu.dll",
-"afd1b0ac6467c174e083c5dfffd9aa76395a3c10e71719da5551efcc6422caf2"
-]
-],
-"updates": [
-"KB5026446"
-]
+"retry": [],
+"updates": null
 }
