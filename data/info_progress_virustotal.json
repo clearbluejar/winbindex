@@ -2,6 +2,15 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [],
+"retry": [
+[
+"apx01000.dll",
+"042801a4d503372d9bdfbfb431d2c5aff8c898fecbe12340f0c7e6e936237d54"
+],
+[
+"atmlib.dll",
+"f4388d9fa2a36adc6a9d536938dce37acd912538b261a6cdb718a35fb11f2ac7"
+]
+],
 "updates": null
 }
