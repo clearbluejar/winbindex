@@ -1058,6 +1058,12 @@
             "releaseDate": "2023-05-09",
             "releaseVersion": "10240.19926",
             "updateUrl": "https://support.microsoft.com/help/5026382"
+        },
+        "KB5027230": {
+            "heading": "June 13, 2023-KB5027230 (OS Build 10240.19983)",
+            "releaseDate": "2023-06-13",
+            "releaseVersion": "10240.19983",
+            "updateUrl": "https://support.microsoft.com/help/5027230"
         }
     },
     "1511": {
