@@ -1070,6 +1070,12 @@
             "releaseDate": "2023-06-13",
             "releaseVersion": "10240.19983",
             "updateUrl": "https://support.microsoft.com/help/5027230"
+        },
+        "KB5028622": {
+            "heading": "June 23, 2023-KB5028622 (OS Build 10240.19986) Out-of-band",
+            "releaseDate": "2023-06-23",
+            "releaseVersion": "10240.19986",
+            "updateUrl": "https://support.microsoft.com/help/5028622"
         }
     },
     "1511": {
