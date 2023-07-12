@@ -2212,6 +2212,12 @@
             "releaseVersion": "14393.5989",
             "updateUrl": "https://support.microsoft.com/help/5027219"
         },
+        "KB5028169": {
+            "heading": "July 11, 2023&#x2014;KB5028169 (OS Build 14393.6085) ",
+            "releaseDate": "2023-07-11",
+            "releaseVersion": "14393.6085",
+            "updateUrl": "https://support.microsoft.com/help/5028169"
+        },
         "KB5028623": {
             "heading": "June 23, 2023&#x2014;KB5028623 (OS Build 14393.5996) Out-of-band",
             "releaseDate": "2023-06-23",
