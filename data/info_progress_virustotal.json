@@ -2,8 +2,11 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [],
-"updates": [
-"KB5028254"
+"retry": [
+[
+"licensemanager.dll",
+"ed2e53fda64b3ec75256d58fa0f6297f19a493e1f1d4e25e92f47cdd72a08c6a"
 ]
+],
+"updates": null
 }
