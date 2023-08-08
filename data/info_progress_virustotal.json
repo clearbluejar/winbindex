@@ -2,13 +2,19 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [],
-"updates": [
-"KB5029242",
-"KB5029244",
-"KB5029247",
-"KB5029253",
-"KB5029259",
-"KB5029263"
+"retry": [
+[
+"dpx.dll",
+"35ea25da3d738923a30216dd55b9cc474bf41cffeef8716a0ad1593e28bdb48d"
+],
+[
+"drupdate.dll",
+"8821343d2512f29f53cbe23c1d36f2a6e31fbef171d0847793e570fd6412e87f"
+],
+[
+"omadmclient.exe",
+"4681282f576b425196c19e6051ea87c0c2985301ae8efc5819ce35b36a23a612"
 ]
+],
+"updates": null
 }
