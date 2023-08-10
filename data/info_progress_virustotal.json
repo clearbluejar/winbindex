@@ -4,8 +4,8 @@
 "pending": {},
 "retry": [
 [
-"omadmclient.exe",
-"4681282f576b425196c19e6051ea87c0c2985301ae8efc5819ce35b36a23a612"
+"windows.media.protection.playready.dll",
+"213b91c4c286c52cc7bfc4b3b0faf48043744d39771114de04bb68c7cb2591a1"
 ]
 ],
 "updates": null
