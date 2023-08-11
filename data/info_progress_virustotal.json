@@ -4,8 +4,12 @@
 "pending": {},
 "retry": [
 [
-"windows.media.protection.playready.dll",
-"213b91c4c286c52cc7bfc4b3b0faf48043744d39771114de04bb68c7cb2591a1"
+"windows.perception.winmd",
+"680ea8999a3a4f37f8e6c16bd87a24ae72bdaa2dbd2aeb80b3ac94fef6a0cac0"
+],
+[
+"wmiutils.dll",
+"ea246be2299dff8106582f944589b10196007fae67ca0cd69837430d0fd09c1e"
 ]
 ],
 "updates": null
