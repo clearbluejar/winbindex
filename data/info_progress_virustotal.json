@@ -2,15 +2,6 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [
-[
-"windows.perception.winmd",
-"680ea8999a3a4f37f8e6c16bd87a24ae72bdaa2dbd2aeb80b3ac94fef6a0cac0"
-],
-[
-"wmiutils.dll",
-"ea246be2299dff8106582f944589b10196007fae67ca0cd69837430d0fd09c1e"
-]
-],
+"retry": [],
 "updates": null
 }
