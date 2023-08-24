@@ -2,6 +2,11 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [],
+"retry": [
+[
+"hostnetsvc.dll",
+"9945a430e461e63af0667f1e5d4824f7912eedcd4d9dde0a24da18efaf81759d"
+]
+],
 "updates": null
 }
