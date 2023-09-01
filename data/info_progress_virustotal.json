@@ -2,6 +2,23 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [],
+"retry": [
+[
+"drmk.sys",
+"1748e380fef264861ad6fbad33a079d37c775734b2f02ee133a6161b7b7d8ea2"
+],
+[
+"msapofxproxy.dll",
+"1651ad741b1fe8094b240652612c1aab6b55bd6a0762b213d741deb7aa02f510"
+],
+[
+"portcls.sys",
+"5f4227c38ed6d578b5deb95b4eb5d02dfd0ee511a30c77ae07cd491c62ba98f4"
+],
+[
+"sysfxui.dll",
+"31e104692ff9a232fd89dde3780fd0adc8f4090b70300feb109a37cf32b7b995"
+]
+],
 "updates": null
 }
