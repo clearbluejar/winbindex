@@ -2,6 +2,23 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [],
+"retry": [
+[
+"iumdll.dll",
+"00a9dbbbaad45790119f763a9d50fbd3a7ef23d319830a65ce7eea6424216697"
+],
+[
+"ucrtbase_enclave.dll",
+"6fcf24bdcd3b1833b44fc7ec6a2701396ef78f20e17ba605207b4960126c52db"
+],
+[
+"uxinit.dll",
+"88d907a91f23ebbbf612fa01a374d75884d5fa7ea6e4355fd58a85866b015ef9"
+],
+[
+"wordpad.exe",
+"0970d0e8d16367f1f05e079e88f8c4684bb8fdf46c44bb7981db2d7b9cfd2187"
+]
+],
 "updates": null
 }
