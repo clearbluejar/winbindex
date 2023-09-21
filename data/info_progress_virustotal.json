@@ -8,20 +8,8 @@
 "a151a2fbee8e2828c834ce4c6863bd917acb626a7e7ac777f15b4e8dd3454208"
 ],
 [
-"iumdll.dll",
-"00a9dbbbaad45790119f763a9d50fbd3a7ef23d319830a65ce7eea6424216697"
-],
-[
 "microsoft.cloudexperiencehost.dll",
 "e6fcbbd1363aeb4e54d1c779b7692f8869a0af4062a73d0974ae0a4e6672ff69"
-],
-[
-"ucrtbase_enclave.dll",
-"6fcf24bdcd3b1833b44fc7ec6a2701396ef78f20e17ba605207b4960126c52db"
-],
-[
-"uxinit.dll",
-"88d907a91f23ebbbf612fa01a374d75884d5fa7ea6e4355fd58a85866b015ef9"
 ]
 ],
 "updates": null
