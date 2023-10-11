@@ -4,15 +4,21 @@
 "pending": {},
 "retry": [
 [
+"ehstorshell.dll",
+"8f0a27ef76ed3068fa07c959837d946a0a7c572efd4201b44c2920077b0b1f15"
+],
+[
 "msedge.dll",
 "8d5f420dd8880e12f03a2fe13eb4ecd1ceadfc1137a9a2ceb09511438e2a939d"
+],
+[
+"msedge.dll",
+"fd8e3a6b387bb2aef918d659b04784d29bc55af5bc00721eeb83c17fcac50e7d"
+],
+[
+"qedit.dll",
+"00f89e891efd3359840072f9ad83a4795eef2a9922ff022e3ab70708f56d8827"
 ]
 ],
-"updates": [
-"KB5031377",
-"KB5031362",
-"KB5031361",
-"KB5031356",
-"KB5031358"
-]
+"updates": null
 }
