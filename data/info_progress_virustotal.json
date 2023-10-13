@@ -4,12 +4,20 @@
 "pending": {},
 "retry": [
 [
+"adamuninstall.exe",
+"f6abb0628e69db20d769af4195c93cf231316cff74f687f360ba1629ea480196"
+],
+[
 "msedge.dll",
 "8d5f420dd8880e12f03a2fe13eb4ecd1ceadfc1137a9a2ceb09511438e2a939d"
 ],
 [
 "msedge.dll",
 "fd8e3a6b387bb2aef918d659b04784d29bc55af5bc00721eeb83c17fcac50e7d"
+],
+[
+"windowscodecsext.dll",
+"7732be36d5bf57bfe35857b8741c9678ecd16cf7c27e3d21413362302cac14f6"
 ]
 ],
 "updates": null
