@@ -4,32 +4,12 @@
 "pending": {},
 "retry": [
 [
-"dmcertinst.exe",
-"293c41060221f9eca8bc127630b7aec2770482782cd586d6f46e8df08d45e1ff"
-],
-[
-"msdtcstp.dll",
-"4ec3579f5c9a5c8898ce955cbb9dcabaf7a182aacfa8d25fc738549a2dd7eb82"
-],
-[
 "msedge.dll",
 "8d5f420dd8880e12f03a2fe13eb4ecd1ceadfc1137a9a2ceb09511438e2a939d"
 ],
 [
 "msedge.dll",
 "fd8e3a6b387bb2aef918d659b04784d29bc55af5bc00721eeb83c17fcac50e7d"
-],
-[
-"provpackageapi.dll",
-"f252a02e4e391776395b06d630d8f391ecb2c2620f7d60d10a10cbe827b6ca78"
-],
-[
-"windows.storage.search.dll",
-"bd9a1f984aa36ed59c167171f5616a7c127e78ff9b47feaf874de7548619d9d8"
-],
-[
-"windowsudk.winmd",
-"e0b6a4ccb8d974f854332ca27c1922763420a864df1fadde86bbbf74c8b1bdc9"
 ]
 ],
 "updates": null
