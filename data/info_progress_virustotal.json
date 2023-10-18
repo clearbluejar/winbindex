@@ -4,12 +4,20 @@
 "pending": {},
 "retry": [
 [
+"mavinject.exe",
+"a7741448f28ecb8268cdfdd571d8dc40c762e3d3b603c89035d25ce69a4d7f72"
+],
+[
 "msedge.dll",
 "8d5f420dd8880e12f03a2fe13eb4ecd1ceadfc1137a9a2ceb09511438e2a939d"
 ],
 [
 "msedge.dll",
 "fd8e3a6b387bb2aef918d659b04784d29bc55af5bc00721eeb83c17fcac50e7d"
+],
+[
+"ndishc.dll",
+"3d7ee2cb120df0ab28741b75f322cb11731f2b7cfcde5ce3a20f7390792c0401"
 ]
 ],
 "updates": null
