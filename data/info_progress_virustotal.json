@@ -4,10 +4,6 @@
 "pending": {},
 "retry": [
 [
-"appvclientps.dll",
-"e158a7419303a1b7bbc257a6260c0d86a5a11fd267c604db37143bdb8249d6f3"
-],
-[
 "msedge.dll",
 "8d5f420dd8880e12f03a2fe13eb4ecd1ceadfc1137a9a2ceb09511438e2a939d"
 ],
