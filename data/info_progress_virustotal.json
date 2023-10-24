@@ -4,10 +4,6 @@
 "pending": {},
 "retry": [
 [
-"mqac.sys",
-"c800a5f9fe2b51497c0abd37c86eea5237756845d703642a23c76ea62ee0fa88"
-],
-[
 "msedge.dll",
 "8d5f420dd8880e12f03a2fe13eb4ecd1ceadfc1137a9a2ceb09511438e2a939d"
 ],
