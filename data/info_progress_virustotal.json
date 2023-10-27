@@ -1,6 +1,9 @@
 {
 "next": null,
-"next_updates": null,
+"next_updates": [
+"vpci.sys",
+"673b650db85ed2bc49decba2c9def15c452c92359a18bead08befd21bcf71b25"
+],
 "pending": {},
 "retry": [
 [
@@ -10,7 +13,14 @@
 [
 "msedge.dll",
 "fd8e3a6b387bb2aef918d659b04784d29bc55af5bc00721eeb83c17fcac50e7d"
+],
+[
+"mspaint.exe",
+"c0f1e2099339b1d6dcd9471324a23fe4f30368783f757be177b8ea7aa196383c"
 ]
 ],
-"updates": null
+"updates": [
+"KB5031445",
+"KB5031455"
+]
 }
