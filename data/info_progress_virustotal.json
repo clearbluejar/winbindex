@@ -1,8 +1,63 @@
 {
-"next": null,
+"next": [
+"rpcxdr.sys",
+"cf12a31d3245447cbd27b7f46fc2997db487c2f2579ddcdc212f5e197022f838"
+],
 "next_updates": null,
 "pending": {},
 "retry": [
+[
+"cflapi.dll",
+"bac74e4d301f51ab12f95a3dc1029b879bc079fdaffd5a120e599ec85a3817ab"
+],
+[
+"configureexpandedstorage.dll",
+"c318aeb7c4d8e730be61e489f0041f24c11d9bac201d4d8ab03fdc8cb2ead35f"
+],
+[
+"coreshellextframework.dll",
+"96577b422ad8aa54aebb4bd93c2c3588e9b53ea0e5fa0e13d2bdbab72962dd89"
+],
+[
+"dot3msm.dll",
+"dae9396fc240a4e47b2194c54a99ccba35aef7cb74eaa8ae25d9f06e8e79acd2"
+],
+[
+"dpapiprovider.dll",
+"64ee8c00a22cbb9d1db88c69be34c40d8d81ef3b3d392ed7b8e0e6793decddda"
+],
+[
+"drmk.sys",
+"9ba031c8acb7296ba86ffe61f85705093d96e229c209713cf2ef529de3f358c2"
+],
+[
+"drvstore.dll",
+"9aec36dc7a762871e607347911142d4f8c2955fcc6a2920ac4f1df02b7464b02"
+],
+[
+"dsreg.dll",
+"35733bbe6098402ece58207e085c35b29cc435646c794e25a0da31236c7dbb26"
+],
+[
+"dtsh.dll",
+"66afe8c3fd5a7778c9f2dee79346861102b265827c174affc8f3b1f1acc25963"
+],
+[
+"dui70.dll",
+"1b62fe30b8bca85643f479f4c32dcfc253edfde86d96f5bf5bc3d4987bdd0b3d"
+],
+[
+"dumpsd.sys",
+"82a0b50b6f4b858fdae0fdb581804487c315b05d8cc49bd6364d2873f6bcff7d"
+],
+[
+"dxcore.dll",
+"4a147c12113c5c32c2f2825ca58f3401f7b451ecd9fd46ec3846c5af6ead0a77"
+],
+[
+"esdsip.dll",
+"8c1055fd7fc141cf12f8e72d8db3f5bf87ab06c4044ad39f8a52d7ce0b0cd24b"
+],
 [
 "msedge.dll",
 "8d5f420dd8880e12f03a2fe13eb4ecd1ceadfc1137a9a2ceb09511438e2a939d"
@@ -12,12 +67,8 @@
 "fd8e3a6b387bb2aef918d659b04784d29bc55af5bc00721eeb83c17fcac50e7d"
 ],
 [
-"windows.storage.applicationdata.dll",
-"675eba41e0fd5f15b69a4b1b920067a520960caa4890fe512d8705ccc7f35564"
-],
-[
-"windows.system.launcher.dll",
-"be618c248f89986925c1a6482b94f1bbf9c2233ed9b0e0f1b56d11f852b62fab"
+"reagentc.exe",
+"d89c529e5bb73fb9785d8bfcc45dd3029b4a7b60e5a50f483dedc45ae02ab683"
 ]
 ],
 "updates": null
