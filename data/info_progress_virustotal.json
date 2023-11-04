@@ -4,8 +4,8 @@
 "pending": {},
 "retry": [
 [
-"microsoft.configci.commands.dll",
-"899d8d8559a5420e20ebaaa5a508a95622a422c394f31add92ed9850aaf57f76"
+"devrtl.dll",
+"c8ac8de7db2319fd7047e89eec31884e257590e42b0d568321eddb33e8d4f717"
 ],
 [
 "msedge.dll",
@@ -14,14 +14,6 @@
 [
 "msedge.dll",
 "fd8e3a6b387bb2aef918d659b04784d29bc55af5bc00721eeb83c17fcac50e7d"
-],
-[
-"sgrmenclave_secure.dll",
-"ab5be8ca0b13b012984890d11ccfb5a04a1be7885080c47a0d503b2831a8099c"
-],
-[
-"winsockai.dll",
-"dcfd64b75c77b0b0079330d00369d73d5d602449545fb7166743d04c0b1c1ba4"
 ]
 ],
 "updates": null
