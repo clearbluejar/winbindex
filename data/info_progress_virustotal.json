@@ -4,10 +4,6 @@
 "pending": {},
 "retry": [
 [
-"deviceenroller.exe",
-"3f0e8d950432df946926179ee6889ee66097d332ff3a5a2b1274728d756de23d"
-],
-[
 "msedge.dll",
 "8d5f420dd8880e12f03a2fe13eb4ecd1ceadfc1137a9a2ceb09511438e2a939d"
 ],
@@ -16,8 +12,8 @@
 "fd8e3a6b387bb2aef918d659b04784d29bc55af5bc00721eeb83c17fcac50e7d"
 ],
 [
-"vmhgs.dll",
-"3ce23b28515ad3f769ee5ee03d86e3db34d705836adf2fe2f0f4dc0e4311a3cb"
+"syncsharettsvc.exe",
+"0ee2dd9cba561b24b93cebd546c5515bc6736a9efca6c4569572df5b2ae66ee5"
 ]
 ],
 "updates": null
