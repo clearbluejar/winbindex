@@ -4,16 +4,16 @@
 "pending": {},
 "retry": [
 [
+"fontsub.dll",
+"3bf9218c7e84f9f31a688e56205f9d300400d3bf8bc3c4123ce38f4a40437ce2"
+],
+[
 "msedge.dll",
 "8d5f420dd8880e12f03a2fe13eb4ecd1ceadfc1137a9a2ceb09511438e2a939d"
 ],
 [
 "msedge.dll",
 "fd8e3a6b387bb2aef918d659b04784d29bc55af5bc00721eeb83c17fcac50e7d"
-],
-[
-"syncsharettsvc.exe",
-"0ee2dd9cba561b24b93cebd546c5515bc6736a9efca6c4569572df5b2ae66ee5"
 ]
 ],
 "updates": null
