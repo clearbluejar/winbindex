@@ -4,8 +4,8 @@
 "pending": {},
 "retry": [
 [
-"fontsub.dll",
-"3bf9218c7e84f9f31a688e56205f9d300400d3bf8bc3c4123ce38f4a40437ce2"
+"chsem.dll",
+"3420db3cb692c5a5171640877e265b55dd7bc2e7fa67c5576963a1bc1f63f7c3"
 ],
 [
 "msedge.dll",
@@ -14,6 +14,10 @@
 [
 "msedge.dll",
 "fd8e3a6b387bb2aef918d659b04784d29bc55af5bc00721eeb83c17fcac50e7d"
+],
+[
+"setupmgr.dll",
+"3fcaaf811aaf7ca5ad388bff7615f19f43d08204cad5b24a5b05a0c1a29f8c12"
 ]
 ],
 "updates": null
