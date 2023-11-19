@@ -4,20 +4,12 @@
 "pending": {},
 "retry": [
 [
-"chsem.dll",
-"3420db3cb692c5a5171640877e265b55dd7bc2e7fa67c5576963a1bc1f63f7c3"
-],
-[
 "msedge.dll",
 "8d5f420dd8880e12f03a2fe13eb4ecd1ceadfc1137a9a2ceb09511438e2a939d"
 ],
 [
 "msedge.dll",
 "fd8e3a6b387bb2aef918d659b04784d29bc55af5bc00721eeb83c17fcac50e7d"
-],
-[
-"setupmgr.dll",
-"3fcaaf811aaf7ca5ad388bff7615f19f43d08204cad5b24a5b05a0c1a29f8c12"
 ]
 ],
 "updates": null
