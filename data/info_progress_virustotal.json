@@ -1,8 +1,5 @@
 {
-"next": [
-"schmmgmt.dll",
-"e8db59605587f7b262e5165014ee83aec3b482e574b105280fc43cf0caa38c2c"
-],
+"next": null,
 "next_updates": null,
 "pending": {},
 "retry": [
@@ -17,6 +14,14 @@
 [
 "msedge.dll",
 "fd8e3a6b387bb2aef918d659b04784d29bc55af5bc00721eeb83c17fcac50e7d"
+],
+[
+"settingshandlers_cloudpc.dll",
+"c7b6883b1c5a1627a2a637281e0391128b8f341aa78a7d3ad0dc67e816326157"
+],
+[
+"settingshandlers_keyboard.dll",
+"ba19cb8d8341fe6e0558c0ea43f31e5032a879f71c65aed1503fba420de242df"
 ]
 ],
 "updates": null
