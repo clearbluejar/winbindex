@@ -4,22 +4,6 @@
 "pending": {},
 "retry": [
 [
-"msedge.dll",
-"475111309018047910fd5c146fa4880a9cd0cca4f5754b413568bc014878abe0"
-],
-[
-"msedge.dll",
-"8d5f420dd8880e12f03a2fe13eb4ecd1ceadfc1137a9a2ceb09511438e2a939d"
-],
-[
-"msedge.dll",
-"fd8e3a6b387bb2aef918d659b04784d29bc55af5bc00721eeb83c17fcac50e7d"
-],
-[
-"settingshandlers_cloudpc.dll",
-"c7b6883b1c5a1627a2a637281e0391128b8f341aa78a7d3ad0dc67e816326157"
-],
-[
 "settingshandlers_keyboard.dll",
 "ba19cb8d8341fe6e0558c0ea43f31e5032a879f71c65aed1503fba420de242df"
 ]
