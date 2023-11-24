@@ -2,11 +2,6 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [
-[
-"settingshandlers_keyboard.dll",
-"ba19cb8d8341fe6e0558c0ea43f31e5032a879f71c65aed1503fba420de242df"
-]
-],
+"retry": [],
 "updates": null
 }
