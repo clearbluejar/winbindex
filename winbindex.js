@@ -9,6 +9,7 @@ var globalFunctions = {};
 
     function run() {
         globalFunctions.onHashCopyClick = onHashCopyClick;
+        globalFunctions.onBase64HashCopyClick = onBase64HashCopyClick;
         globalFunctions.onShowExtraClick = onShowExtraClick;
         globalFunctions.onMultiDownloadClick = onMultiDownloadClick;
 
@@ -27,6 +28,10 @@ var globalFunctions = {};
             $('#arch-links a[href="?arch=' + architecture + '"]').addClass('active');
             baseDataUrl = 'https://m417z.com/winbindex-data-' + architecture;
         }
+        else {
+            // just use data from main site? a hack to not have to store wb data. don't hate me.
+            baseDataUrl = 'https://winbindex.m417z.com/data';
+        }
 
         animateLogo();
 
@@ -41,7 +46,7 @@ var globalFunctions = {};
         }
 
         if (displayFile) {
-            var newTitle = displayFile + ' - Winbindex';
+            var newTitle = displayFile + ' - WinbindexDiff';
             $('#main-title').text(newTitle);
             document.title = newTitle;
 
@@ -240,6 +245,17 @@ var globalFunctions = {};
         }).virtualselect('load');
     }
 
+    function cleanVersion(data) {
+
+        if (!data) {
+            return 'no-version';
+        }
+
+        var text = data.replace(/\s*(\(.*\)|built by:.*|@BuiltBy:.*)$/, '');
+
+        return escapeHtml(text);
+    }
+
     function loadFileInfoToTable(baseDataUrl, fileToLoad, searchQuery) {
         $.extend($.fn.dataTableExt.oSort, {
             'natural-asc': function (a, b) {
@@ -327,9 +343,7 @@ var globalFunctions = {};
                             return '???';
                         }
 
-                        var text = data.replace(/\s*(\(.*\)|built by:.*|@BuiltBy:.*)$/, '');
-
-                        return escapeHtml(text);
+                        return cleanVersion(data);
                     }
                 }, {
                     targets: 'target-file-size',
@@ -421,6 +435,94 @@ var globalFunctions = {};
                             '<a href="#" class="btn btn-secondary btn-sm disabled">Download</a></span>';
                     }
                 }, {
+                    targets: 'target-diff-button',
+                    className: 'text-center',
+                    width: '1%',
+                    searchable: false,
+                    sortable: false,
+                    render: function (data, type) {
+
+                        if (type !== 'display') {
+                            return data;
+                        }
+
+
+                        var filename = data.fileToLoad;
+                        var oldFile = data.oldFile;
+                        var newFile = data.newFile;
+                        var diffJson = data.diffJson;
+
+                        if (oldFile == undefined || newFile == undefined) {
+                            return '???';
+                        }
+
+                        if (oldFile.fileInfo == undefined || newFile.fileInfo == undefined) {
+                            return '???';
+                        }
+
+                        if (oldFile.fileInfo.timestamp !== undefined && oldFile.fileInfo.virtualSize !== undefined && newFile.fileInfo.virtualSize !== undefined && newFile.fileInfo.virtualSize !== undefined) {
+
+                            var oldUrl = makeSymbolServerUrl(filename, oldFile.fileInfo.timestamp, oldFile.fileInfo.virtualSize);
+                            var newUrl = makeSymbolServerUrl(filename, newFile.fileInfo.timestamp, newFile.fileInfo.virtualSize);
+
+                            var oldVer = cleanVersion(oldFile.fileInfo.version);
+                            var newVer = cleanVersion(newFile.fileInfo.version);
+
+                            var html = '<span class="btn gap-2 d-md-flex">';
+
+                            if (oldUrl == newUrl) {
+                                var msg = 'Error: URL collision found. ' + newVer + ' and ' + oldVer + ' map to the same url. Diff not possible.'
+                                var errorLink = $('<a style="padding-left: 30px" data-toggle="tooltip" data-html="true" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="18" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M569.5 440C588 472 564.8 512 527.9 512H48.1c-36.9 0-60-40.1-41.6-72L246.4 24c18.5-32 64.7-32 83.2 0l239.9 416zM288 354c-25.4 0-46 20.6-46 46s20.6 46 46 46 46-20.6 46-46-20.6-46-46-46zm-43.7-165.3l7.4 136c.3 6.4 5.6 11.3 12 11.3h48.5c6.4 0 11.6-5 12-11.3l7.4-136c.4-6.9-5.1-12.7-12-12.7h-63.4c-6.9 0-12.4 5.8-12 12.7z"/></svg></a>')
+                                    .prop('title', escapeHtml(msg));
+                                html += errorLink[0].outerHTML + '</span>'
+
+                            } else {
+                                var oldFilename = makeDiffFilename(filename, oldFile.fileInfo.machineType, oldVer).toLowerCase();
+                                var newFilename = makeDiffFilename(filename, newFile.fileInfo.machineType, newVer).toLowerCase();
+
+
+
+                                var dockerData = getDockerCmd(oldFilename, oldUrl, newFilename, newUrl);
+                                var cmdData = getTerminalCmd(oldFilename, oldUrl, newFilename, newUrl);
+                                var markdownDiffFile = getMarkdownDiffName(oldFilename, newFilename);
+                                var markdownDiffUrl = 'https://gist.github.com/ghidriff-bot/';
+
+
+                                var dockerDiffLink = $('<a data-toggle="tooltip" data-html="true" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4 .4 67.6 .1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"/></svg></a>')
+                                    .prop('title', escapeHtml(dockerData) + '<br><br>Docker Command - Click to copy')
+                                    .attr('onclick', 'arguments[0].stopPropagation(); return globalFunctions.onBase64HashCopyClick(this, "' + btoa(dockerData) + '");');
+
+                                var cmdDiffLink = $('<a data-toggle="tooltip" data-html="true" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M258 273L63.6 467.3c-9.4 9.4-24.6 9.4-33.9 0L7 444.6c-9.4-9.4-9.4-24.5 0-33.9L161 256 7 101.3c-9.3-9.4-9.3-24.5 0-33.9l22.7-22.7c9.4-9.4 24.6-9.4 33.9 0L258 239c9.4 9.4 9.4 24.6 0 33.9zM640 456v-32c0-13.3-10.7-24-24-24H312c-13.3 0-24 10.7-24 24v32c0 13.3 10.7 24 24 24h304c13.3 0 24-10.7 24-24z"/></svg></a>')
+                                    .prop('title', escapeHtml(cmdData) + '<br><br>Terminal Command - Click to copy')
+                                    .attr('onclick', 'arguments[0].stopPropagation(); return globalFunctions.onBase64HashCopyClick(this, "' + btoa(cmdData) + '");');
+
+                                html += cmdDiffLink[0].outerHTML + ' ' + dockerDiffLink[0].outerHTML;
+
+                                if (markdownDiffFile in diffJson) {
+
+                                    var gistID = diffJson[markdownDiffFile];
+
+                                    var markdownLink = $('<a data-toggle="tooltip" data-html="true" target="_blank" href="' + markdownDiffUrl + gistID + '"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M593.8 59.1H46.2C20.7 59.1 0 79.8 0 105.2v301.5c0 25.5 20.7 46.2 46.2 46.2h547.7c25.5 0 46.2-20.7 46.1-46.1V105.2c0-25.4-20.7-46.1-46.2-46.1zM338.5 360.6H277v-120l-61.5 76.9-61.5-76.9v120H92.3V151.4h61.5l61.5 76.9 61.5-76.9h61.5v209.2zm135.3 3.1L381.5 256H443V151.4h61.5V256H566z"/></svg></a>')
+                                        .prop('title', escapeHtml(markdownDiffFile) + '<br><br>Link to Markdown Diff');
+                                } else {
+                                    var markdownLink = $('<a data-toggle="tooltip" data-html="true" href="#"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#afbacb" d="M593.8 59.1H46.2C20.7 59.1 0 79.8 0 105.2v301.5c0 25.5 20.7 46.2 46.2 46.2h547.7c25.5 0 46.2-20.7 46.1-46.1V105.2c0-25.4-20.7-46.1-46.2-46.1zM338.5 360.6H277v-120l-61.5 76.9-61.5-76.9v120H92.3V151.4h61.5l61.5 76.9 61.5-76.9h61.5v209.2zm135.3 3.1L381.5 256H443V151.4h61.5V256H566z"/></svg></a>')
+                                        .prop('title', escapeHtml(markdownDiffFile) + '<br><br>Diff Missing')
+                                        .attr('onclick', 'arguments[0].stopPropagation(); return globalFunctions.onHashCopyClick(this, "' + markdownDiffFile + '");');
+                                }
+
+                                html += ' ' + markdownLink[0].outerHTML;
+
+                            }
+
+                            html += '</span>';
+                            return html;
+
+                        } else {
+                            return '???';
+                        }
+                    }
+                },
+                {
                     targets: 'target-plain-text',
                     render: function (data, type) {
                         if (!data) {
@@ -484,6 +586,22 @@ var globalFunctions = {};
 
         yadcf.init(filesTable, yadcfColumns);
 
+        // get diff filenames
+        var diffJson = (function () {
+            var json = null;
+            $.ajax({
+                url: 'https://ghidriff-bot.github.io/winbindex-diffs/diff_filenames.json',
+                async: false,
+                // https://stackoverflow.com/a/17682424
+                // xhrFields: {
+                //     responseType: 'json'
+                // }
+            }).done(function (data) {
+                json = data;
+            });
+            return json;
+        })();
+
         $.ajax({
             url: baseDataUrl + '/by_filename_compressed/' + fileToLoad + '.json.gz',
             // https://stackoverflow.com/a/17682424
@@ -544,6 +662,9 @@ var globalFunctions = {};
                     var win10Versions = getWin10Versions(d);
                     var updateKbs = getUpdateKbs(d);
 
+                    // get the n-1 binary for diffing
+                    var previousEntry = getPreviousEntry(data, d);
+
                     rows.push([
                         hash,
                         sha1,
@@ -557,7 +678,8 @@ var globalFunctions = {};
                         assemblyArchitecture,
                         assemblyVersion,
                         { hash: hash, data: d },
-                        { hash: hash, fileInfo: fileInfo }
+                        { hash: hash, fileInfo: fileInfo },
+                        { fileToLoad, oldFile: previousEntry, newFile: d, diffJson: diffJson }
                     ]);
 
                     if (description && updateKbs.items[0] && updateKbs.items[0] > mainDescriptionUpdate) {
@@ -875,6 +997,152 @@ var globalFunctions = {};
         };
     }
 
+    // https://stackoverflow.com/questions/8175093/simple-function-to-sort-an-array-of-objects
+    function sort_by_key(array, key) {
+        return array.sort(function (a, b) {
+            var x = a[key]; var y = b[key];
+            return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+        });
+    }
+
+    function getVersion(data) {
+
+        var ver = null;
+
+        if (data.fileInfo !== undefined && data.fileInfo.version !== undefined) {
+            // attempt to pull straight from fileInfo
+            ver = cleanVersion(data.fileInfo.version);
+        } else {
+            // pull from assembly as backup
+            ver = getAssemblyVersion(data).title;
+        }
+
+        return ver;
+    }
+
+    function getArch(data) {
+
+        var arch = null;
+
+        if (data.fileInfo !== undefined && data.fileInfo.machineType !== undefined) {
+            // attempt to pull straight from fileInfo
+            arch = humanFileArch(data.fileInfo.machineType);
+        } else {
+            // pull from assembly as backup
+            var asmArch = getAssemblyProcessorArchitecture(data).title;
+
+            //translate to match humanFileArch
+            if (asmArch == 'amd64') {
+                arch = 'x64'
+            } else {
+                arch = asmArch;
+            }
+        }
+
+        return arch;
+
+    }
+
+    function getPreviousEntry(allData, data) {
+        var builds = [];
+
+        var targetVersion = getVersion(data)
+        var targetBuild = parseInt(targetVersion.split('.')[2]);
+        var targetRev = parseInt(targetVersion.split('.')[3]);
+        var previousEntry;
+
+        Object.keys(allData).forEach(function (key) {
+            var entry = allData[key];
+
+            var entryVer = getVersion(entry);
+            var entryBuild = parseInt(entryVer.split('.')[2]);
+            var entryRev = parseInt(entryVer.split('.')[3]);
+
+            if (getParameterByName('arch') == 'insider') {
+                var targetArch = getArch(data);
+                var entryArch = getArch(entry);
+
+                // insider only need to check arch and build
+                if (targetArch == entryArch) {
+                    builds.push([entryRev, entryBuild, entry])
+                }
+            }
+            else {
+                // x64 and arm can assume build means same arch
+                if (targetBuild == entryBuild) {
+                    builds.push([entryRev, entryBuild, entry])
+                }
+            }
+        });
+
+        // handle sorting of x64,arm64, and insider
+        var targetRevOrBuild;
+        var targetRevOrBuildIndex;
+
+        if (getParameterByName('arch') == 'insider') {
+            // sort by builds (each one increments)
+            targetRevOrBuild = targetBuild;
+            targetRevOrBuildIndex = 1; // Build
+        } else {
+            // sort by revision (already limited by same build)
+            targetRevOrBuild = targetRev;
+            targetRevOrBuildIndex = 0; // Rev
+        }
+
+        builds = sort_by_key(builds, targetRevOrBuildIndex).reverse();
+
+        for (const entry of builds) {
+            if (targetRevOrBuild <= entry[targetRevOrBuildIndex]) {
+                continue;
+            }
+            // [entryRev, entryBuild, entry]
+            previousEntry = entry[2];
+            break
+        }
+
+        return previousEntry;
+    }
+
+    function getDockerCmd(oldFileName, oldUrl, newFileName, newUrl) {
+
+        var downloadTool = 'wget';
+        var binsDir = 'bins';
+        var diffDir = 'ghidriffs';
+        var image = 'ghcr.io/clearbluejar/ghidriff'
+
+        let dockerCmd = 'mkdir -p ' + binsDir + '\n' +
+            'mkdir -p ' + diffDir + '\n' +
+            downloadTool + ' ' + oldUrl + ' -O ' + binsDir + '/' + oldFileName + '\n' +
+            downloadTool + ' ' + newUrl + ' -O ' + binsDir + '/' + newFileName + '\n' +
+            'docker run -it -v $(pwd)/' + diffDir + ':' + diffDir + ' -v $(pwd)/' + binsDir + ':' + binsDir + ' --rm ' + image + ' ' + oldFileName + ' ' + newFileName + '\n'
+
+        return dockerCmd;
+    }
+
+    function getTerminalCmd(oldFileName, oldUrl, newFileName, newUrl) {
+
+        var downloadTool = 'wget';
+        var diffTool = 'ghidriff';
+
+        let terminalCmd = downloadTool + ' ' + oldUrl + ' -O ' + oldFileName + '\n' +
+            downloadTool + ' ' + newUrl + ' -O ' + newFileName + '\n' +
+            diffTool + ' ' + oldFileName + ' ' + newFileName + '\n'
+
+        return terminalCmd;
+
+    }
+
+    function getMarkdownDiffName(oldFileName, newFileName) {
+
+        return oldFileName + '-' + newFileName;
+
+    }
+
+    function makeDiffFilename(filename, arch, version) {
+        return [filename, humanFileArch(arch), version].join('.');
+    }
+
+
     // https://stackoverflow.com/a/20732091
     function humanFileSize(size) {
         var i = size === 0 ? 0 : Math.floor(Math.log(size) / Math.log(1024));
@@ -933,6 +1201,20 @@ var globalFunctions = {};
         );
 
         return false;
+    }
+
+    function onBase64HashCopyClick(element, hash) {
+
+        var base64regex = /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
+
+        if (!base64regex.test(hash)) {
+            return false;
+        }
+
+        // decode b64
+        hash = window.atob(hash)
+
+        return onHashCopyClick(element, hash);
     }
 
     function onShowExtraClick(element, fileHash, encoded) {
