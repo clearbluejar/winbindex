@@ -465,8 +465,8 @@ var globalFunctions = {};
                             var oldUrl = makeSymbolServerUrl(filename, oldFile.fileInfo.timestamp, oldFile.fileInfo.virtualSize);
                             var newUrl = makeSymbolServerUrl(filename, newFile.fileInfo.timestamp, newFile.fileInfo.virtualSize);
 
-                            var oldVer = cleanVersion(oldFile.fileInfo.version);
-                            var newVer = cleanVersion(newFile.fileInfo.version);
+                            var oldVer = cleanVersion(getVersion(oldFile));
+                            var newVer = cleanVersion(getVersion(newFile));
 
                             var html = '<span class="btn gap-2 d-md-flex">';
 
@@ -1005,6 +1005,7 @@ var globalFunctions = {};
         });
     }
 
+    // get version from fileInfo, fallback to Assembly
     function getVersion(data) {
 
         var ver = null;
