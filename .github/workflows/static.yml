@@ -25,7 +25,7 @@ jobs:
   # Single deploy job since we're just deploying
   deploy:
     environment:
-      name: github-pages
+      name: main
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
@@ -33,19 +33,15 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v4
+      - name: Remove files
+        run: |
+          rm -rf data/ .vscode 
+          rm CNAME LICENSE package.json package-lock.json README.md RSYNC-STATIC-FILES.RCJ .eslintrc.json .gitattributes .gitignore
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:          
-          path: |
-            '.'
-            !data/
-            !CNAME
-            !LICENSE
-            !package-lock.json
-            !package.json
-            !README.md
-            !RSYNC-STATIC-FILES.RCJ
-            !.*
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # Upload entire repository
+          path: "."
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3
