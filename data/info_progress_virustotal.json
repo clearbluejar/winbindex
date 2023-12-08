@@ -2,11 +2,6 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [
-[
-"winload.exe",
-"dc6d5f74238f5d2c60dd942d63754be53404528bfe8c9657baa32bf8a7b075a6"
-]
-],
+"retry": [],
 "updates": null
 }
