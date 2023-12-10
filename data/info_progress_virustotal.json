@@ -2,6 +2,19 @@
 "next": null,
 "next_updates": null,
 "pending": {},
-"retry": [],
+"retry": [
+[
+"microsoft.configci.commands.resources.dll",
+"2ec59fd0a7346f9729763eec3c5f922a0e67df4b6eba6defd7a7d993fd4031b9"
+],
+[
+"microsoft.configci.commands.resources.dll",
+"a091a6d2cba0eef9167132d4dba31183fd5fe1dc62b1f812ad157198331e5898"
+],
+[
+"microsoft.grouppolicy.reporting.resources.dll",
+"f56509258d5f44f297fd7ee6aa57bcd352aca52b4f66759913a77d8610e6926c"
+]
+],
 "updates": null
 }
