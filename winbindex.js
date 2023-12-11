@@ -1107,15 +1107,13 @@ var globalFunctions = {};
     function getDockerCmd(oldFileName, oldUrl, newFileName, newUrl) {
 
         var downloadTool = 'wget';
-        var binsDir = 'bins';
         var diffDir = 'ghidriffs';
         var image = 'ghcr.io/clearbluejar/ghidriff'
 
-        let dockerCmd = 'mkdir -p ' + binsDir + '\n' +
-            'mkdir -p ' + diffDir + '\n' +
-            downloadTool + ' ' + oldUrl + ' -O ' + binsDir + '/' + oldFileName + '\n' +
-            downloadTool + ' ' + newUrl + ' -O ' + binsDir + '/' + newFileName + '\n' +
-            'docker run -it -v $(pwd)/' + diffDir + ':' + diffDir + ' -v $(pwd)/' + binsDir + ':' + binsDir + ' --rm ' + image + ' ' + oldFileName + ' ' + newFileName + '\n'
+        let dockerCmd = 'mkdir -p ' + diffDir + '\n' +
+            downloadTool + ' ' + oldUrl + ' -O ' + diffDir + '/' + oldFileName + '\n' +
+            downloadTool + ' ' + newUrl + ' -O ' + diffDir + '/' + newFileName + '\n' +
+            'docker run -it --rm -v $(pwd)/' + diffDir + ':/' + diffDir + ' ' + image + ' ' + diffDir + '/' + oldFileName + ' ' + diffDir + '/' + newFileName + '\n'
 
         return dockerCmd;
     }
