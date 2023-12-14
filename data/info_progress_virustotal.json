@@ -4,8 +4,16 @@
 "pending": {},
 "retry": [
 [
-"iemigplugin.dll",
-"6640e15af75db1e163dd11181474f4e9ae8948289aa073c07c6d60e65c205e1f"
+"d3d11.dll",
+"7f9354a5a74b39027b47f03594cd2169f50ef3fd8e7bb65e14197f4b57350dc2"
+],
+[
+"dswave.dll",
+"55373c620fde5e1245d325ddd56eb4aa61d3a976e692f60ea8e79f939a4b9a69"
+],
+[
+"edgeiso.dll",
+"dcf5b539da44dec48bf46a92aa9f1c7797a161ba9666611a4f22b1e999bcaf8c"
 ]
 ],
 "updates": null
