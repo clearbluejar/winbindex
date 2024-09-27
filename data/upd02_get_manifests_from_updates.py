@@ -129,7 +129,7 @@ def download_update(windows_version, update_kb):
     #    with open(local_path, 'wb') as f:
     #        shutil.copyfileobj(r.raw, f)
 
-    args = ['aria2c', '-x4', '-o', local_path, '--allow-overwrite=true', download_url]
+    args = ['aria2c', '-x4', '-d', local_dir, '-o', local_filename, '--allow-overwrite=true', download_url]
     subprocess.check_call(args, stdout=None if config.verbose_run else subprocess.DEVNULL)
 
     return download_url, local_dir, local_path
@@ -157,6 +157,7 @@ def extract_update_files(local_dir: Path, local_path: Path):
     next_extract_dir_num = 1
 
     extract_dir = local_dir.joinpath(f'_extract_{next_extract_dir_num}')
+    print(f'Extracting {local_path} to {extract_dir}')
     next_extract_dir_num += 1
     cab_extract('*', local_path, extract_dir)
     local_path.unlink()
@@ -168,6 +169,7 @@ def extract_update_files(local_dir: Path, local_path: Path):
             src_extract_dir = local_dir.joinpath(f'_extract_{src_extract_dir_num}')
             for cab in src_extract_dir.glob('*.cab'):
                 extract_dir = local_dir.joinpath(f'_extract_{next_extract_dir_num}')
+                print(f'Extracting {cab} to {extract_dir}')
                 next_extract_dir_num += 1
                 cab_extract('*', cab, extract_dir)
                 cab.unlink()
@@ -200,7 +202,7 @@ def extract_update_files(local_dir: Path, local_path: Path):
                             raise Exception(f'A destination item already exists and is not a file: {destination_file}')
 
                         if sha256sum(source_file) != sha256sum(destination_file):
-                            raise Exception(f'A different file copy already exists: {destination_file}')
+                            raise Exception(f'A different file copy already exists: {destination_file} (source: {source_file})')
 
                         ignore.append(name)
 
@@ -217,8 +219,10 @@ def extract_update_files(local_dir: Path, local_path: Path):
     assert len(psf_files) <= 1
     if len(psf_files) == 1:
         psf_file = psf_files[0]
-        args = ['tools/PSFExtractor.exe', '-v2', psf_file, local_dir.joinpath('express.psf.cix.xml'), local_dir]
+        description_file = local_dir.joinpath('express.psf.cix.xml')
+        args = ['tools/PSFExtractor.exe', '-v2', psf_file, description_file, local_dir]
         subprocess.check_call(args, stdout=None if config.verbose_run else subprocess.DEVNULL)
+        description_file.unlink()
         psf_file.unlink()
 
     # Make sure there are no MSU files.
@@ -230,21 +234,15 @@ def extract_update_files(local_dir: Path, local_path: Path):
         if file.is_file():
             unpack_null_differential_file(file, file)
 
-    local_dir_resolved = local_dir.resolve(strict=True)
-    local_dir_unc = Rf'\\?\{local_dir_resolved}'
-
     # Use DeltaDownloader to extract meaningful data from delta files:
     # https://github.com/m417z/DeltaDownloader
-    # Avoid path length limitations by using a UNC path.
-    args = ['tools/DeltaDownloader/DeltaDownloader.exe', '/g', local_dir_unc]
+    args = ['tools/DeltaDownloader/DeltaDownloader.exe', '/g', local_dir]
     subprocess.check_call(args, stdout=None if config.verbose_run else subprocess.DEVNULL)
 
     # Starting with Windows 11, manifest files are compressed with the DCM v1 format.
-    # Use SYSEXP to de-compress them: https://github.com/hfiref0x/SXSEXP
-    # Avoid some path length limitations by using a resolved path (the limit is
-    # still MAX_PATH).
-    args = ['tools/sxsexp64.exe', local_dir_resolved, local_dir_resolved]
-    subprocess.run(args, stdout=None if config.verbose_run else subprocess.DEVNULL)
+    # Use SXSEXP to de-compress them: https://github.com/hfiref0x/SXSEXP
+    args = ['tools/sxsexp64.exe', local_dir, local_dir]
+    subprocess.check_call(args, stdout=None if config.verbose_run else subprocess.DEVNULL)
 
 
 def get_files_from_update(windows_version: str, update_kb: str):

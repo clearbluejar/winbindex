@@ -3,6 +3,7 @@ import xml.etree.ElementTree as ET
 from struct import unpack
 from pathlib import Path
 from typing import List
+import fnmatch
 import hashlib
 import signify
 import base64
@@ -200,7 +201,7 @@ def get_file_signing_times(pathname: Path):
     signing_times = []
     with open(pathname, 'rb') as f:
         pefile = SignedPEFile(f)
-        for signed_data in pefile.signed_datas:
+        for signed_data in pefile.iter_signed_datas(ignore_parse_errors=False):
             if signed_data.signer_info.countersigner is not None:
                 signing_time = signed_data.signer_info.countersigner.signing_time
                 signing_times.append(signing_time.isoformat().removesuffix('+00:00'))
@@ -220,12 +221,26 @@ def get_delta_data_for_manifest_file(manifest_path: Path, name: str):
     for key, value in key_value:
         delta_data[key] = value.strip()
 
+    # Skip delta files without RiftTable. In this case, it was also observed
+    # that machineType doesn't have the correct value.
+    if delta_data['Code'] != 'Raw' and delta_data['RiftTable'] == '(none)':
+        assert (
+            any(fnmatch.fnmatch(name.lower(), p) for p in config.delta_data_without_rift_table_names) or
+            any(fnmatch.fnmatch(manifest_path.name.lower(), p) for p in config.delta_data_without_rift_table_manifests)
+        ), (name, manifest_path)
+        assert int(delta_data['TimeStamp']) == 0
+        return None
+
     result = {}
 
     result['size'] = int(delta_data['TargetSize'])
 
-    assert delta_data['HashAlgorithm'] == 'CALG_MD5'
-    result['md5'] = delta_data['Hash'].lower()
+    if delta_data['HashAlgorithm'] == 'CALG_MD5':
+        result['md5'] = delta_data['Hash'].lower()
+    elif delta_data['HashAlgorithm'] == 'CALG_SHA_256':
+        result['sha256'] = delta_data['Hash'].lower()
+    else:
+        assert False, delta_data['HashAlgorithm']
 
     if delta_data['Code'] != 'Raw':
         machine_type_values = {
@@ -373,11 +388,14 @@ def parse_manifest_file(manifest_path, file_el):
     if algorithm == 'sha256':
         filename = file_el.attrib['name'].split('\\')[-1].lower()
         if (re.search(r'\.(exe|dll|sys|winmd|cpl|ax|node|ocx|efi|acm|scr|tsp|drv)$', filename)):
+            def is_raw_file(file_info):
+                return file_info.keys() in [{'size', 'md5'}, {'size', 'sha256'}, {'size', 'md5', 'sha1', 'sha256'}]
+
             is_pe_file = hash not in config.file_hashes_non_pe
             if (is_pe_file and
                 file_info and
                 info_source in ['pe', 'delta'] and
-                file_info.keys() in [{'size', 'md5'}, {'size', 'md5', 'sha1', 'sha256'}]):
+                is_raw_file(file_info)):
                 if config.allow_unknown_non_pe_files:
                     is_pe_file = False
                 else:
@@ -385,7 +403,7 @@ def parse_manifest_file(manifest_path, file_el):
 
             if not is_pe_file:
                 if file_info:
-                    assert info_source in ['pe', 'delta'] and file_info.keys() in [{'size', 'md5'}, {'size', 'md5', 'sha1', 'sha256'}]
+                    assert info_source in ['pe', 'delta'] and is_raw_file(file_info)
                 else:
                     assert info_source == 'none'
                 assert hash not in file_hashes.get(filename, {})
@@ -441,6 +459,10 @@ def parse_manifests(manifests_dir: Path, output_dir: Path):
 
     for path in manifests_dir.glob('*.manifest'):
         if not path.is_file():
+            continue
+
+        if path.stat().st_size == 0:
+            print(f'WARNING: Skipping empty manifest file {path}')
             continue
 
         try:

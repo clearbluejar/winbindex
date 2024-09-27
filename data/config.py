@@ -10,7 +10,7 @@ deploy_git_name = 'winbindex-deploy-bot'
 deploy_save_disk_space = True
 deploy_amend_last_commit = True
 
-windows_versions_unsupported = set()
+windows_versions_unsupported = {}
 
 updates_unsupported = {
     # ARM only.
@@ -29,6 +29,7 @@ extract_in_a_new_thread = False
 exit_on_first_error = True
 high_mem_usage_for_performance = False
 compression_level = 3
+group_by_filename_processes = 4
 
 delta_machine_type_values_supported = {
     'CLI4_I386',
@@ -36,6 +37,11 @@ delta_machine_type_values_supported = {
     # 'CLI4_ARM',
     'CLI4_ARM64',
 }
+
+delta_data_without_rift_table_names = {
+    '*.mui',
+}
+delta_data_without_rift_table_manifests = set()
 
 # Non-PE files (very rare).
 file_hashes_non_pe = set()

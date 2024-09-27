@@ -56,7 +56,7 @@ def get_updates_from_microsoft_support_for_version(windows_major_version, url):
         r'<div [^>]*\bid="supLeftNav"[^>]*>'
         r'([\s\S]*?)'
         r'</div>\s*'
-        r'<div [^>]*\bid="supArticleContent"[^>]*>'
+        r'<main [^>]*\bid="supArticleContent"[^>]*>'
     )
     updates_navigation_links = re.findall(p, html)
     assert len(updates_navigation_links) == 1
@@ -287,8 +287,20 @@ def main():
     merge_updates(result, updates_from_release_health)
     windows_version_updates_sanity_check(result)
 
-    for windows_version in config.windows_versions_unsupported:
-        del result[windows_version]
+    for windows_version, from_date in config.windows_versions_unsupported.items():
+        if windows_version not in result:
+            continue
+
+        new_windows_version_result = {
+            k: v
+            for k, v in result[windows_version].items()
+            if from_date is not None and v['releaseDate'] < from_date
+        }
+
+        if new_windows_version_result:
+            result[windows_version] = new_windows_version_result
+        else:
+            del result[windows_version]
 
     with open(config.out_path.joinpath('updates.json'), 'w') as f:
         json.dump(result, f, indent=4, sort_keys=True)
