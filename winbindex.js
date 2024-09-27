@@ -1050,6 +1050,7 @@ var globalFunctions = {};
         var targetVersion = getVersion(data)
         var targetBuild = parseInt(targetVersion.split('.')[2]);
         var targetRev = parseInt(targetVersion.split('.')[3]);
+        var targetArch = getArch(data);
         var previousEntry;
 
         Object.keys(allData).forEach(function (key) {
@@ -1058,9 +1059,9 @@ var globalFunctions = {};
             var entryVer = getVersion(entry);
             var entryBuild = parseInt(entryVer.split('.')[2]);
             var entryRev = parseInt(entryVer.split('.')[3]);
+            var entryArch = getArch(entry);
 
             if (getParameterByName('arch') == 'insider') {
-                var targetArch = getArch(data);
                 var entryArch = getArch(entry);
 
                 // insider only need to check arch and build
@@ -1070,7 +1071,7 @@ var globalFunctions = {};
             }
             else {
                 // x64 and arm can assume build means same arch
-                if (targetBuild == entryBuild) {
+                if (targetBuild == entryBuild && targetArch == entryArch) {
                     builds.push([entryRev, entryBuild, entry])
                 }
             }
